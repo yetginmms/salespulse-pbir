@@ -44,14 +44,14 @@
                           "Entity": "v_fact_prepaids"
                         }
                       },
-                      "Property": "prepaid_value_td"
+                      "Property": "prepaid_qty_td"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(v_fact_prepaids.prepaid_value_td)",
-              "nativeQueryRef": "Sum of prepaid_value_td"
+              "queryRef": "Sum(v_fact_prepaids.prepaid_qty_td)",
+              "nativeQueryRef": "Sum of prepaid_qty_td"
             }
           ]
         }
@@ -82,7 +82,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Prepaid values by periods'"
+                  "Value": "'Prepaid values by periods_test_last'"
                 }
               }
             }
@@ -94,25 +94,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "f6abf7916d1820344094",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "v_fact_prepaids"
-                  }
-                },
-                "Property": "prepaid_value_td"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
       {
         "name": "198c2f132d9b642e5325",
         "field": {
