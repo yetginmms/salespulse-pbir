@@ -1,0 +1,20 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["v_fact_prepaids"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table v_fact_prepaids
+ref table DateTableTemplate_7bfa3d53-acef-4481-9159-fa3fbc09d4a8
+ref table LocalDateTable_9bbf02f1-c649-45b0-8f0e-76f0705853de
+
+ref cultureInfo en-US
+

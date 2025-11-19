@@ -1,0 +1,5 @@
+relationship 4a041d74-aff5-414a-9938-8a4db3fba001
+	joinOnDateBehavior: datePartOnly
+	fromColumn: v_fact_prepaids.Date
+	toColumn: LocalDateTable_9bbf02f1-c649-45b0-8f0e-76f0705853de.Date
+

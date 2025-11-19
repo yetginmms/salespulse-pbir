@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "1808096081049de40a90",
+  "position": {
+    "x": 77.817614964925951,
+    "y": 395.07404520654711,
+    "z": 1,
+    "height": 297.30319563522988,
+    "width": 676.414653156664,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_fact_prepaids"
+                    }
+                  },
+                  "Property": "article"
+                }
+              },
+              "queryRef": "v_fact_prepaids.article",
+              "nativeQueryRef": "article"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "v_fact_prepaids"
+                        }
+                      },
+                      "Property": "prepaid_qty_td"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(v_fact_prepaids.prepaid_qty_td)",
+              "nativeQueryRef": "Sum of prepaid_qty_td"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "v_fact_prepaids"
+                      }
+                    },
+                    "Property": "prepaid_qty_td"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "146cf220d60266ed0658",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_fact_prepaids"
+              }
+            },
+            "Property": "article"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c56bcdead95b50d0c94d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "v_fact_prepaids"
+                  }
+                },
+                "Property": "prepaid_qty_td"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

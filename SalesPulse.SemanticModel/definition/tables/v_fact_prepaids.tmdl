@@ -1,0 +1,86 @@
+table v_fact_prepaids
+	lineageTag: 97d3d8c6-2e0c-4106-a0f5-e2391e56567f
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e8475712-5ab5-4fd5-8627-9e921e9931c3
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 4a041d74-aff5-414a-9938-8a4db3fba001
+			defaultHierarchy: LocalDateTable_9bbf02f1-c649-45b0-8f0e-76f0705853de.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Status2
+		dataType: string
+		lineageTag: c8c9d50b-b646-45c2-86fd-dec8268adabd
+		summarizeBy: none
+		sourceColumn: Status2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Store
+		dataType: string
+		lineageTag: dea5c0c0-62ce-48f7-8803-50433e39d50b
+		summarizeBy: none
+		sourceColumn: Store
+
+		annotation SummarizationSetBy = Automatic
+
+	column article
+		dataType: string
+		lineageTag: aecf98e5-e2e2-4b13-8da4-ef0e8724f76c
+		summarizeBy: none
+		sourceColumn: article
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_no
+		dataType: string
+		lineageTag: 5eba7c9a-9581-4c8b-a7be-9d89b60be65b
+		summarizeBy: none
+		sourceColumn: customer_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column prepaid_qty_td
+		dataType: int64
+		formatString: 0
+		lineageTag: ad326970-5a0c-4bf9-a359-b586b2bd6cb5
+		summarizeBy: sum
+		sourceColumn: prepaid_qty_td
+
+		annotation SummarizationSetBy = Automatic
+
+	column prepaid_value_td
+		dataType: double
+		lineageTag: a45fd9cb-c98f-44ea-9f5b-7a1f7270c224
+		summarizeBy: sum
+		sourceColumn: prepaid_value_td
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition v_fact_prepaids = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\yetgin\OneDrive - MediaMarktSaturn\Masaüstü\Iphone 17  AIR_Prepaid_Report_Offline_Customer_No.xlsx"), null, true),
+				    #"Iphone 17 & AIR_Prepaid_Report__Sheet" = Source{[Item="Iphone 17 & AIR_Prepaid_Report_",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Iphone 17 & AIR_Prepaid_Report__Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Status2", type text}, {"Store", type text}, {"article", type text}, {"customer_no", Int64.Type}, {"prepaid_qty_td", Int64.Type}, {"prepaid_value_td", type number}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"customer_no", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
