@@ -1,0 +1,14 @@
+Param([string]$Path = "./SalesPulse.Report")
+
+$failed = $false
+Get-ChildItem -Path $Path -Filter *.json -Recurse | ForEach-Object {
+  try {
+    $content = Get-Content $_.FullName -Raw
+    $null = $content | ConvertFrom-Json
+  } catch {
+    Write-Error "Invalid JSON: $($_.FullName)"
+    $failed = $true
+  }
+}
+
+if ($failed) { throw "Validation failed." } else { Write-Host "Validation passed." }

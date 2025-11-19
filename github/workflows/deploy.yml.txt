@@ -1,0 +1,52 @@
+name: CI-CD SalesPulse PBIR (Simulated)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-validate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate PBIR JSONs
+        run: pwsh ./scripts/validate.ps1
+
+      - name: Build artifacts
+        run: pwsh ./scripts/build.ps1
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: salespulse-dist
+          path: dist
+
+  deploy-dev:
+    needs: build-validate
+    runs-on: windows-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: salespulse-dist
+          path: dist
+      - name: Dummy deploy to Dev
+        run: pwsh ./scripts/deploy.ps1 -Env "Dev"
+
+  deploy-test:
+    needs: deploy-dev
+    runs-on: windows-latest
+    steps:
+      - name: Dummy deploy to Test
+        run: pwsh ./scripts/deploy.ps1 -Env "Test"
+
+  deploy-prod:
+    needs: deploy-test
+    runs-on: windows-latest
+    steps:
+      - name: Dummy deploy to Prod
+        run: pwsh ./scripts/deploy.ps1 -Env "Prod"

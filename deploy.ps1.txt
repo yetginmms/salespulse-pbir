@@ -1,0 +1,4 @@
+Param([string]$Env = "Dev")
+
+Write-Host "Simulated deployment to $Env workspace."
+Write-Host "If Entra ID app existed, artifacts would be uploaded and dataset refreshed here."

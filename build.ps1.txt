@@ -1,0 +1,8 @@
+Param(
+  [string]$SourcePath = ".",
+  [string]$OutputPath = "./dist"
+)
+if (!(Test-Path $OutputPath)) { New-Item -ItemType Directory -Path $OutputPath | Out-Null }
+Copy-Item -Path "$SourcePath/SalesPulse.Report" -Destination "$OutputPath/SalesPulse.Report" -Recurse -Force
+Copy-Item -Path "$SourcePath/SalesPulse.SemanticModel" -Destination "$OutputPath/SalesPulse.SemanticModel" -Recurse -Force
+Write-Host "Build artifacts prepared at $OutputPath"
