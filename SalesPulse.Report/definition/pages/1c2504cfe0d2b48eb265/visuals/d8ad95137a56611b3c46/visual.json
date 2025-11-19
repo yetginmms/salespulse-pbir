@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "d8ad95137a56611b3c46",
+  "position": {
+    "x": 149.83666061705989,
+    "y": 420.47186932849365,
+    "z": 1,
+    "height": 299.67332123411978,
+    "width": 925.73502722323042,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_fact_prepaids"
+                    }
+                  },
+                  "Property": "Store"
+                }
+              },
+              "queryRef": "v_fact_prepaids.Store",
+              "nativeQueryRef": "Store"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "v_fact_prepaids"
+                        }
+                      },
+                      "Property": "prepaid_value_td"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(v_fact_prepaids.prepaid_value_td)",
+              "nativeQueryRef": "Sum of prepaid_value_td"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "v_fact_prepaids"
+                      }
+                    },
+                    "Property": "prepaid_value_td"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c12c62b71ca2a852bcb4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_fact_prepaids"
+              }
+            },
+            "Property": "Store"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "338df83f8a14012e0b71",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "v_fact_prepaids"
+                  }
+                },
+                "Property": "prepaid_value_td"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
