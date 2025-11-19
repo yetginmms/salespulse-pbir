@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "d8ad95137a56611b3c46",
+  "name": "b60526e30c4108827065",
   "position": {
-    "x": 149.83666061705989,
-    "y": 420.47186932849365,
-    "z": 1,
-    "height": 299.67332123411978,
-    "width": 925.73502722323042,
-    "tabOrder": 1
+    "x": 85.798908807482462,
+    "y": 204.52065471551052,
+    "z": 2,
+    "height": 180.57677318784098,
+    "width": 1140.3273577552611,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "pivotTable",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
-        "Rows": {
+        "Category": {
           "projections": [
             {
               "field": {
@@ -23,16 +23,16 @@
                       "Entity": "v_fact_prepaids"
                     }
                   },
-                  "Property": "Store"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "v_fact_prepaids.Store",
-              "nativeQueryRef": "Store",
+              "queryRef": "v_fact_prepaids.Date",
+              "nativeQueryRef": "Date",
               "active": true
             }
           ]
         },
-        "Values": {
+        "Y": {
           "projections": [
             {
               "field": {
@@ -60,40 +60,29 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Column": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "v_fact_prepaids"
-                      }
-                    },
-                    "Property": "prepaid_value_td"
+                  "SourceRef": {
+                    "Entity": "v_fact_prepaids"
                   }
                 },
-                "Function": 0
+                "Property": "Date"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'git version control_test_updateD'"
+                  "Value": "'Prepaid values by periods'"
                 }
               }
             }
@@ -106,21 +95,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c12c62b71ca2a852bcb4",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "v_fact_prepaids"
-              }
-            },
-            "Property": "Store"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "338df83f8a14012e0b71",
+        "name": "f6abf7916d1820344094",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -137,6 +112,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "198c2f132d9b642e5325",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_fact_prepaids"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }
